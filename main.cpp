@@ -1,24 +1,24 @@
 #include <iostream>
-#include "bilist.h"
+#include "BiList.h"
 
 int main() {
   BiList<char>* head = nullptr;
-  BiList<char>* tail = nullptr;
 
-  char arr[] = {'A', 'B', 'C', 'D'};
-  int count = sizeof(arr) / sizeof(arr[0]);
+  try {
+    char arr[] = {'A', 'B', 'C', 'D'};
+    int count = sizeof(arr) / sizeof(arr[0]);
 
-  for (int i = 0; i < count; ++i) {
-      push_back<char>(head, tail, arr[i]);
+    for (int i = 0; i < count; ++i) {
+      head = push_back(head, arr[i]);
+    }
+
+    print_list(head);
+
+  } catch (...) {
+    return 1;
   }
 
-  std::cout << "Список после конвертации массива: ";
-  print_list<char>(head);
-
-  clear_list<char>(head, tail);
-  if (head == nullptr) {
-      std::cout << "Память успешно очищена." << std::endl;
-  }
+  head = clear_list(head);
 
   return 0;
 }
