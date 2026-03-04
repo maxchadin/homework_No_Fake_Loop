@@ -6,7 +6,7 @@
 
 template< class T >
 struct BiList {
-  T val;
+  T val; // Наличие конструктора по умолчанию у T
   BiList<T> * next;
   BiList<T> * prev;
 };
@@ -15,7 +15,7 @@ template< class T >
 BiList<T>* push_back(BiList<T>* head, const T& value) {
   try {
     BiList<T>* newNode = new BiList<T>;
-    newNode->val = value;
+    newNode->val = value; // Оператор присваивания или конструктор копирования
     newNode->next = nullptr;
     if (!head) {
       newNode->prev = nullptr;
@@ -35,7 +35,7 @@ template< class T >
 BiList<T>* push_front(BiList<T>* head, const T& value) {
   try {
     BiList<T>* newNode = new BiList<T>;
-    newNode->val = value;
+    newNode->val = value; // Оператор присваивания T
     newNode->prev = nullptr;
     newNode->next = head;
     if (head) head->prev = newNode;
@@ -49,7 +49,7 @@ template< class T >
 BiList<T>* remove_val(BiList<T>* head, const T& value) {
   BiList<T>* curr = head;
   while (curr) {
-    if (curr->val == value) {
+    if (curr->val == value) { // Оператор сравнения (==) для типа T
       if (curr->prev) curr->prev->next = curr->next;
       if (curr->next) curr->next->prev = curr->prev;
       BiList<T>* newHead = (curr == head) ? curr->next : head;
@@ -65,7 +65,7 @@ template< class T >
 void print_list(BiList<T>* head) {
   BiList<T>* curr = head;
   while (curr) {
-    std::cout << curr->val << " ";
+    std::cout << curr->val << " "; // Оператор вывода в поток (<<) для T
     curr = curr->next;
   }
   std::cout << std::endl;
