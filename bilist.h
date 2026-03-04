@@ -24,3 +24,27 @@ void push_back(BiList<T>* &head, BiList<T>* &tail, T value) {
     }
     tail = newNode;
 }
+
+template< class T >
+void print_list(BiList<T>* head) {
+    BiList<T>* current = head;
+    while (current != nullptr) {
+        std::cout << "[" << current->val << "] ";
+        current = current->next;
+    }
+    std::cout << std::endl;
+}
+
+template< class T >
+void clear_list(BiList<T>* &head, BiList<T>* &tail) {
+    BiList<T>* current = head;
+    while (current != nullptr) {
+        BiList<T>* temp = current;
+        current = current->next;
+        delete temp;
+    }
+    head = nullptr;
+    tail = nullptr;
+}
+
+#endif
